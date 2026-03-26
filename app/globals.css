@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black text-white overflow-hidden m-0 p-0 touch-none w-screen h-screen;
+  }
+}
+
+@layer utilities {
+  .neon-text {
+    text-shadow: 0 0 10px #00f0ff, 0 0 30px #00f0ff;
+  }
+  
+  .glass-card {
+    @apply bg-black/50 backdrop-blur border border-cyan-500/30 rounded-xl relative overflow-hidden;
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.1);
+    pointer-events: none;
+  }
+
+  /* Optional Chinese style neon */
+  .gold-neon-text {
+    text-shadow: 0 0 10px #ffd700, 0 0 30px #ffd700;
+  }
+}
+
+/* Animations */
+@keyframes breathing {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1.0; }
+}
+.animate-breathing {
+  animation: breathing 3s ease-in-out infinite;
+}
+
+@keyframes pulse-border {
+  0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 240, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
+}
+.animate-pulse-border {
+  animation: pulse-border 1.5s infinite;
+}
+
+@keyframes flash-overlay {
+  0% { opacity: 0.6; }
+  100% { opacity: 0; }
+}
+.animate-flash {
+  animation: flash-overlay 0.4s ease-out forwards;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
